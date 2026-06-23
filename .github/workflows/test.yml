@@ -1,0 +1,41 @@
+name: Test Github Actions
+
+env:
+  branch: ${{ github.reg_name }}
+  SECRET_KEYS: "A-1 B-2 C-3 D-4 E-5 F-6 G-7"
+  WORDS: "apple banana cherry dragon eagle forest galaxy"
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+  actions-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mask
+        shell: bash
+        run: |
+          secrets=($SECRET_KEYS)
+          words=(apple banana cherry dragon eagle forest galaxy)
+          
+          result="{"
+          
+          for i in "${!secrets[@]}"
+          do
+            secretName="${secrets[$i]}"
+            value="${words[$i]}"
+          
+            echo "Fetching secret: $secretName"
+          
+            echo "::add-mask::$value"
+          
+            value_escaped=$(printf '%s' "$value" | sed 's/"/\\"/g')
+          
+            result="$result\"$secretName\":\"$value_escaped\","
+          
+            echo "$secretName=$value"
+          done
+          
+          result="${result%,}}"
+          echo "$result"
