@@ -39,3 +39,6 @@ jobs:
           
           result="${result%,}}"
           echo "$result"
+          
+          echo "temp=asd" >> "$GITHUB_ENV"
+          echo "$temp"
