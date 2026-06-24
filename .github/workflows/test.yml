@@ -42,3 +42,8 @@ jobs:
           
           echo "temp=asd" >> "$GITHUB_ENV"
           echo "$temp"
+
+      - name: mask
+        shell: bash
+        run: |
+          echo "$temp"
