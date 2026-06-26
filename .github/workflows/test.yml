@@ -49,7 +49,7 @@ jobs:
           echo "$temp"
 
       - name: input test
-        uses: 213kky/github-actions-test/.github/actinos/input_test@ci-input-test
+        uses: 213kky/github-actions-test/.github/actions/input_test@ci-input-test
         with:
           secret: 'asd123'
           secret2: 'zxc123'
