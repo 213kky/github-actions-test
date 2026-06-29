@@ -13,6 +13,9 @@ jobs:
   actions-test:
     runs-on: ubuntu-latest
     steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
       - name: mask
         shell: bash
         run: |
