@@ -15,5 +15,7 @@ runs:
     - name: Check Input
       shell: bash
       run: |
-        echo "secret: ${{ inputs.secret }}"
-        echo "secret2: ${{ inputs.secret2 }}"
+        
+        echo "ALL INPUTS:"
+        echo "secret=${{ inputs.secret }}"
+        echo "secret2=${{ inputs.secret2 }}"
